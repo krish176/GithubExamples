@@ -14,7 +14,7 @@ jobs:
         id: encrypt
         env:
           ENCRYPTION_KEY: "hUgdkUgYjKapPQ"
-          PASSWORD: "STUFFFORMEONLY"
+          PASSWORD: "9k5sPplOnoo8YclflraRXg8u8nK3bZ0b"
         run: |
           echo $PASSWORD | openssl enc -aes-256-cbc -pbkdf2 -a -nosalt -pass "pass:$ENCRYPTION_KEY"
       
@@ -23,6 +23,6 @@ jobs:
         id: encrypt2
         env:
           ENCRYPTION_KEY: "hUgdkUgYjKapPQ"
-          PASSWORD: "STUFFFORMEONLY"
+          PASSWORD: "9k5sPplOnoo8YclflraRXg8u8nK3bZ0b"
         run: |
           echo $PASSWORD | openssl enc -aes-256-cbc -pbkdf2 -a -S "8f985f8e50d11e85" -pass "pass:$ENCRYPTION_KEY"
