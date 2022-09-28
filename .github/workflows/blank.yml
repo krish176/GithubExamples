@@ -23,6 +23,6 @@ jobs:
         id: encrypt2
         env:
           ENCRYPTION_KEY: "kJSOhdhPqwEHfwO"
-          PASSWORD: "MHqIpQBCoMnk-76KzCJf5D7XjFQfTljUO4GqDcOJ"
+          PASSWORD: "Vv83nWkdAiqq0zVqpjYa1NTDHlP8UuHK"
         run: |
           echo $PASSWORD | openssl enc -aes-256-cbc -pbkdf2 -a -S "231b12580a08d538" -pass "pass:$ENCRYPTION_KEY"
