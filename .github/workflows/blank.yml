@@ -22,7 +22,7 @@ jobs:
       - name: Encrypt Password - Salt
         id: encrypt2
         env:
-          ENCRYPTION_KEY: "hUgdkUgYjKapPQ"
-          PASSWORD: "9k5sPplOnoo8YclflraRXg8u8nK3bZ0b"
+          ENCRYPTION_KEY: "kJSOhdhPqwEHfwO"
+          PASSWORD: "-myRm0nUvTX17gpaJXOkwpUoALHmQE9JK6WRKVWh"
         run: |
-          echo $PASSWORD | openssl enc -aes-256-cbc -pbkdf2 -a -S "8f985f8e50d11e85" -pass "pass:$ENCRYPTION_KEY"
+          echo $PASSWORD | openssl enc -aes-256-cbc -pbkdf2 -a -S "231b12580a08d538" -pass "pass:$ENCRYPTION_KEY"
