@@ -1,0 +1,28 @@
+name: OpenSSL Playground
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  secrets-in-github-actions:
+    runs-on: ubuntu-latest
+    
+    steps:
+# WITHOUT SALT
+      - name: Encrypt Password - No Salt
+        id: encrypt
+        env:
+          ENCRYPTION_KEY: "hUgdkUgYjKapPQ"
+          PASSWORD: "STUFFFORMEONLY"
+        run: |
+          echo $PASSWORD | openssl enc -aes-256-cbc -pbkdf2 -a -nosalt -pass "pass:$ENCRYPTION_KEY"
+      
+    # WITH SALT
+      - name: Encrypt Password - Salt
+        id: encrypt2
+        env:
+          ENCRYPTION_KEY: "hUgdkUgYjKapPQ"
+          PASSWORD: "STUFFFORMEONLY"
+        run: |
+          echo $PASSWORD | openssl enc -aes-256-cbc -pbkdf2 -a -S "8f985f8e50d11e85" -pass "pass:$ENCRYPTION_KEY"
