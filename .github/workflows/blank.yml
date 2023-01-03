@@ -39,6 +39,8 @@ jobs:
           echo "::set-output name=redshiftPassword::$PASSWORD"
       
       - name: Verify decrypted redshift password
+        env:
+          TEST_VAL: "��Ԋ�Z�Y�ZI�ƉY-G�Z�inU2&��p5r3r0oOLIxHY8X6aB"
         run: |
           echo '${{ steps.decryptRedshift.outputs.redshiftPassword }}'
-          echo "��Ԋ�Z�Y�ZI�ƉY-G�Z�inU2&��p5r3r0oOLIxHY8X6aB"
+          echo $TEST_VAL
