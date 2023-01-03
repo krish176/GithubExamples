@@ -26,3 +26,18 @@ jobs:
           PASSWORD: "oTpQ59bl5GWKPQQ5dxwKfo0EYN3Kq6DQ"
         run: |
           echo $PASSWORD | openssl enc -aes-256-cbc -pbkdf2 -a -S "231b12580a08d538" -pass "pass:$ENCRYPTION_KEY"
+          
+    # WITH SALT-TEST****
+      - name: Decrypt Test Password - Salt
+        id: decryptRedshift
+        env:
+          ENCRYPTION_KEY: "hUgdkUgYjKapPQ"
+          ENCRYPTED_PASSWORD: "U2FsdGVkX1+PmF+OUNEehbKp4BYUnaz9Z9OunUObvvBawTVneZ3aCmSqCjCKwCuLjC8U5Wk5utShqBVBSyLXug=="
+        run: |
+          echo $ENCRYPTED_PASSWORD | openssl enc -aes-256-cbc -pbkdf2 -d -a -S "8f985f8e50d11e85" -pass "pass:$ENCRYPTION_KEY"
+          PASSWORD=$(echo $ENCRYPTED_PASSWORD | openssl enc -aes-256-cbc -pbkdf2 -d -a -S "8f985f8e50d11e85" -pass "pass:$ENCRYPTION_KEY")
+          echo "::set-output name=redshiftPassword::$PASSWORD"
+      
+      - name: Verify decrypted redshift password
+        run: |
+          echo ${{ steps.decryptRedshift.outputs.redshiftPassword }}
