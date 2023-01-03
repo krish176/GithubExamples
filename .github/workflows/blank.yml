@@ -41,3 +41,4 @@ jobs:
       - name: Verify decrypted redshift password
         run: |
           echo '${{ steps.decryptRedshift.outputs.redshiftPassword }}'
+          echo "��Ԋ�Z�Y�ZI�ƉY-G�Z�inU2&��p5r3r0oOLIxHY8X6aB"
